@@ -13,7 +13,9 @@ class UserSerializer(serializers.ModelSerializer):
         user.set_password(validated_data['password'])
         user.save()
         return user
-
+    class Meta:
+        model = get_user_model()
+        fields = ('username','password')
 
 class TaskSerializer(serializers.ModelSerializer):
     image = serializers.ImageField(max_length=None, use_url=True)
